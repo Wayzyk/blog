@@ -1,0 +1,8 @@
+<% @posts.each do |post| %>
+ <div class="media">
+   <div class="media-body">
+  <%=link_to post.title, post %> <br>
+   <%= post.body %>
+ </div>
+ </div>
+ <% end %>
