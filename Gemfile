@@ -35,7 +35,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
+gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+
 group :development, :test do
+  gem 'pry', '~> 0.11.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
