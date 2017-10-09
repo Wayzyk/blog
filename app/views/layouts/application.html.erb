@@ -22,7 +22,9 @@
          <h1>Блог</h1>
          <ul class="navigation-links">
            <li><a href="#"><%= link_to "Все записи", posts_path%></a></li>
+           <% if current_user %>
            <li><a href="#"><%= link_to "Добавить запись", new_post_path%></a></li>
+           <% end %>
          </ul>
        </header>
 

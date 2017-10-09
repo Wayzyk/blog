@@ -1,27 +1,28 @@
  <p class="body">
    <%= @post.body %>
  </p>
+ <% if current_user %>
 
  <%= link_to 'Редактировать', edit_post_path(@post) %>
  <%= link_to 'Удалить запись', post_path(@post), method: :delete%>
+
+ <% end %>
 
  <h2> Комментарии: </h2>
 
 
  <% @post.comments.each do |comment| %>
       <p>
-        <strong><i><%= comment.name %>:</i></strong><br>
+        <strong><i><%= comment.user.name %>:</i></strong><br>
       <%= comment.body %>
       </p>
     <% end %>
 
   <h2> Добавить комментарий </h2>
+
+  <% if current_user %>
   <p>
-  <%= form_for([@post, @post.comments.build]) do |f| %>
-      <p>
-          <%= f.label :name %><br />
-          <%= f.text_field :name%>
-      </p>
+    <%= form_for([@post, @post, @post.comments.build]) do |f| %>
 
       <p>
           <%= f.label :body %><br />
@@ -31,5 +32,8 @@
       <p>
           <%= f.submit %>
       </p>
+      <% end %>
+      <% else %>
+      <h3> Чтобы оставлять комментарии, нужно зарегистрироваться </h3>
   <% end %>
   </p>
