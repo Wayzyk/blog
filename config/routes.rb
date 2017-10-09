@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :posts do
-    resources :comments
+    resources :comments do
+      get 'reply' => 'comments#reply'
+    end
   end
 
   get '/login' => 'sessions#new'
