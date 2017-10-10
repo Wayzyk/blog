@@ -2,54 +2,62 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_bootstrap
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */
 
+ .comment {
+   word-wrap: break-word;
+   width: 750px;
+ }
+ .comment_reply {
+   word-wrap: break-word;
+   width: 760px;
+ }
+ .col-md-9 {
+   vertical-align: bottom;
+ }
+
+
  #container {
-    margin: 48px auto;
-    width: 960px;
-  }
+   margin: 48px auto;
+   width: 960px;
+ }
 
-  #container > section {
-    clear: both;
-  }
+ #container > section {
+   clear: both;
+ }
 
-  #container > header {
-    margin-bottom: 46px;
-  }
+ #container > header {
+   margin-bottom: 46px;
+ }
 
-  #container > header > h1 {
-    float: left;
-    margin: 0;
-  }
+ #container > header > h1 {
+   float: left;
+   margin: 0;
+ }
 
-  .navigation-links {
-    float: right;
-  }
+ .navigation-links {
+   float: right;
+ }
 
-  .navigation-links li {
-    display: inline-block;
-    margin: 0 16px;
-  }
+ .navigation-links li {
+   display: inline-block;
+   margin: 0 16px;
+ }
 
  /* MISC */
 
-  .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;} * html .clearfix{height:1%;}
+ .clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;} html[xmlns].clearfix{display:block;} * html .clearfix{height:1%;}
 
-  .nested_comments {
-    margin-left: 30px;
-  }
-
-  .nested_comments .nested_comments .nested_comments .nested_comments {
-    margin-left: 0;
-  }
+ .nested_comments {
+   margin-left: 60px;
+ }

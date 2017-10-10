@@ -1,0 +1,11 @@
+<h4>Редактировать комментарий:</h4>
+
+<%= form_for([@post, @comment]) do |f| %>
+  <div class="field">
+    <%= f.text_area :body, size:"118x10" %>
+  </div>
+  <div class="actions", align="left">
+    <%= f.submit "Обновить" %>
+  </div>
+<% end %>
+  <div align="right"><%= link_to 'Назад к записи', @post,  :class => "btn btn-default navbar-btn"  %> </div>

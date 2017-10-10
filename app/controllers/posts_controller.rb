@@ -13,7 +13,12 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.save
 
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      render "new"
+    end
+
   end
 
   def show

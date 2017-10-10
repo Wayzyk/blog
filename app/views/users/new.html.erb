@@ -1,10 +1,20 @@
 <h1> Регистрация </h1>
+<%= simple_form_for @user, url: users_path do |f| %>
+  <br>
 
- <%= form_for :user, url: '/users' do |f| %>
-    Name: <%= f.text_field :name %> <br>
-    Email: <%= f.text_field :email %><br>
-    Password: <%= f.password_field :password %><br>
-    Password Confirmation: <%= f.password_field :password_confirmation %><br>
-    Avatar : <%= f.file_field :avatar %>
-   <%= f.submit "Продолжить" %>
- <% end %>
+  <hr>
+  <hr>
+
+  <%= f.input :name , :placeholder => "От 6 символов",:input_html => {:style=> 'width: 200px'}%> <br>
+
+  <%= f.input :email, :placeholder => "user@domain.com",:input_html => {:style=> 'width: 200px'} %><br>
+
+  <%= f.input :password, :placeholder => "От 8 символов",:input_html => {:style=> 'width: 200px'} %><br>
+
+  <%= f.input :password_confirmation,:placeholder => "Повторный ввод пароля" ,:input_html => {:style=> 'width: 200px'}%><br>
+  Avatar : <%= f.file_field :avatar %>
+  <br>
+  <br>
+
+  <%= f.button :submit %>
+<% end %>
