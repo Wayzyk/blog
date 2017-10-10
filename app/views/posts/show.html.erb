@@ -1,44 +1,49 @@
- <p class="body">
-   <%= @post.body %>
- </p>
- <% if current_user == @post.user %>
+<strong><%= @post.user.name %></strong>
+<br>
+<%= image_tag @post.user.avatar.to_s %>
+<br>
+<br>
+<br>
+<h1 class="title">
+  <center><h2> <%= @post.title %></h2></center>
+</h1>
 
- <%= link_to 'Редактировать', edit_post_path(@post) %>
- <%= link_to 'Удалить запись', post_path(@post), method: :delete , remote: true %>
+<p class="body">
+  <h4><%= @post.body %></h4>
+</p>
 
- <% end %>
+<div align="right">
+<% if current_user == @post.user%>
+  <%= link_to 'Редактировать', edit_post_path(@post), :class => "btn btn-default navbar-btn" %>
+  <%= link_to 'Удалить запись', post_path(@post), method: :delete, :class => "btn btn-default navbar-btn"%>
+<% end %>
+</div>
 
- <h2> Комментарии: </h2>
-
-
- <% @post.comments.each do |comment| %>
-      <p>
-        <%= image_tag comment.user.avatar.to_s %>
-        <strong><i><%= comment.user.name %>:</i></strong><br>
-      <%= comment.body %>
-      </p>
-      <%= link_to "Reply", post_comment_reply_path(@post, comment) %>
-      <% if current_user == comment.user %>
-      <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>
-      <% end %>
-    <% end %>
-
-  <h2> Добавить комментарий </h2>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2> Комментарии: </h2>
+  <%= nested_comments @post.comments.arrange(:order => :created_at)%>
+<br>
+<br>
+<br>
+<div align="left">
+<h2> Добавить комментарий </h2>
   <% if current_user %>
   <p>
-    <%= form_for([@post, @post, @post.comments.build]) do |f| %>
-
-      <p>
-          <%= f.label :body %><br />
-          <%= f.text_area :body %>
-      </p>
-
-      <p>
-          <%= f.submit %>
-      </p>
-      <% end %>
-      <% else %>
-      <h3> Чтобы оставлять комментарии, нужно зарегистрироваться </h3>
+    <%= form_for([@post, @post.comments.build]) do |f| %>
+    <p>
+        <%= f.text_area :body, size:"100x10" %>
+    </p>
+    <p>
+        <%= f.submit "Отправить"%>
+    </p>
+  <% end %>
+  <% else %>
+  <h3> Чтобы оставлять комментарии, нужно зарегистрироваться </h3>
   <% end %>
   </p>
+</div>

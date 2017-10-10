@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def reply
+    @par = Comment.find(params[:comment_id])
     @post = Post.find(params[:post_id])
     comment = Comment.new(:parent_id => params[:comment_id])
   end
@@ -24,6 +25,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:name,:body)
+    params.require(:comment).permit(:name,:body, :parent_id)
   end
 end

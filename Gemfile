@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
+gem 'rmagick', '~> 2.16'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 
 group :development, :test do

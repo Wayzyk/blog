@@ -1,40 +1,40 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <title>Блог</title>
 
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= csrf_meta_tags %>
-    <title>Блог</title>
+<body>
+  <% if current_user %>
 
-  </head>
+    <h5>  Залогинен как <strong><%= current_user.name %> </strong>| <%= link_to "Выйти", '/logout' %></h4>
 
-  <body>
-    <% if current_user %>
-     Залогинен как <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-   <% else %>
-     <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-   <% end %>
+  <% else %>
+    <%= link_to 'Войти', '/login',:class => "btn btn-default navbar-btn" %>  <%= link_to 'Зарегистрироваться', '/signup', :class => "btn btn-default navbar-btn" %>
+  <% end %>
+  <section id="container">
 
-   <section id="container">
-
-      <header class="clearfix">
-         <h1>Блог</h1>
-         <ul class="navigation-links">
-           <li><a href="#"><%= link_to "Все записи", posts_path%></a></li>
-           <% if current_user %>
-           <li><a href="#"><%= link_to "Добавить запись", new_post_path%></a></li>
-           <% end %>
-         </ul>
-       </header>
+    <header class="clearfix">
+    <h1>Блог</h1>
+    <ul class="navigation-links">
+      <li><a href="#"><%= link_to "Все записи", posts_path, :class => "btn btn-default navbar-btn"%></a></li>
+      <% if current_user %>
+      <li><a href="#"><%= link_to "Добавить запись", new_post_path, :class => "btn btn-default navbar-btn"%></a></li>
+      <% end %>
+    </ul>
+  </header>
 
     <section>
-       <p style="font-size: 22px;">
-         <%= yield %>
+      <p style="font-size: 22px;">
+        <%= yield %>
       </p>
-     </section>
+    </section>
 
-   </section>
+  </section>
+</body>
 
-  </body>
 </html>
