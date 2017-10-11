@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show,:edit,:update,:destroy]
+  before_action :find_post, only: [:show,:edit,:update,:destroy, :upvote, :downvote]
   def index
-    @posts = Post.all
+    @posts = Post.all.order(:cached_votes_up => :desc)
   end
 
   def new
@@ -10,8 +10,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-  #  @post.user = current_user
-    #@post.save
+    @post.user = current_user
+    @post.save
 
     if @post.save
       redirect_to @post
@@ -40,6 +40,16 @@ class PostsController < ApplicationController
     @post.destroy
 
     redirect_to root_path
+  end
+
+  def upvote
+    @post.upvote_from current_user
+    redirect_to posts_path
+  end
+
+  def downvote
+    @post.downvote_from current_user
+    redirect_to posts_path
   end
 
   private

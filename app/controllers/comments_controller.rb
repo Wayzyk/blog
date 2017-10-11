@@ -35,6 +35,16 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post)
     end
 
+    def upvote
+      @comment.upvote_from current_user
+      redirect_to post_path
+    end
+
+    def downvote
+      @comment.downvote_from current_user
+      redirect_to post_path
+    end
+
 
   private
 

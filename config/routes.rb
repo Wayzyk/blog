@@ -7,6 +7,19 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :posts do
+    resources :comments do
+      member do
+        put "like" => "comments#upvote"
+        put "unlike" => "comments#downvote"
+      end
+    end
+    member do
+      put "like" => "posts#upvote"
+      put "unlike" => "posts#downvote"
+    end
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 

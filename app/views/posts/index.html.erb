@@ -2,6 +2,21 @@
 <div class="media">
   <div class="media-body">
   <h2> <%=link_to post.title, post %></h2> <br>
+
+  <%= link_to like_post_path(post), class: "like", method: :put do %>
+    <button type="button" class="btn btn-info" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"
+      <span class="badge"><%= post.get_upvotes.size %></span>
+    </button>
+  <% end %>
+
+  <%= link_to unlike_post_path(post), class: "like", method: :put do %>
+    <button type="button" class="btn btn-info" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center"
+      <span class="badge"><%= post.get_downvotes.size %></span>
+    </button>
+  <% end %>
+
 <p> <%= post.body %> </p>
 </div>
 </div>

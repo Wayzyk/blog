@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-  validates :name, :email, :password_digest, presence: true
+  acts_as_votable
+
   has_many :comments, dependent: :destroy
   belongs_to :user
   validates :title, :presence => {:message => "Заголовок не может быть пустым"}

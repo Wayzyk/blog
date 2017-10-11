@@ -18,6 +18,21 @@
       </tr>
     </table>
   </div>
+
+  <%= link_to like_post_comment_path(comment), class: "like", method: :put do %>
+    <button type="button" class="btn btn-info" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"
+      <span class="badge"><%= comment.get_upvotes.size %></span>
+    </button>
+  <% end %>
+
+  <%= link_to unlike_post_comment_path(comment), class: "like", method: :put do %>
+    <button type="button" class="btn btn-info" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center"
+      <span class="badge"><%= comment.get_downvotes.size %></span>
+    </button>
+  <% end %>
+
   <% if current_user %>
    <div align="right">
      <%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
