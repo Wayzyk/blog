@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   acts_as_voter
 
-  validates_length_of :name, :minimum => 3, :message => "Слишком короткое имя (минимум 3 символа)"
-  validates_length_of :password, :minimum => 6, :message => "Слишком короткий пароль (минимум 6 символов)"
+  validates_length_of :name, :minimum => 6, :message => "Слишком короткое имя (минимум 6 символа)"
+  validates_length_of :password, :minimum => 8, :message => "Слишком короткий пароль (минимум 8 символов)"
   validates :name, :uniqueness => { :case_sensitive => false, :message => "Это имя уже занято. Попробуйте другое."}
   validates :name, :presence => { :message => "Имя не может быть пустым" }
   validates :email, :presence => { :message => "Почта не может быть пустая" }
